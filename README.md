@@ -137,7 +137,10 @@ At this point, you should now have a clean version of the PSN plugin installed a
 
 Now here comes the fun part. We now have the `plugin.py` file open in our editor. The next steps will go over how to obtain the _NPSSO token_ that we will be inserting into the file.
 
-5. Make sure you have the latest version of [Mozilla Firefox](https://www.mozilla.org/en-US/firefox/new/), [Google Chrome](https://www.google.com/chrome/) or the new Chromium-based [Microsoft Edge](https://www.microsoft.com/en-us/edge) browser installed before continuing. 
+5. Make sure you have the latest version of [Mozilla Firefox](https://www.mozilla.org/en-US/firefox/new/), [Google Chrome](https://www.google.com/chrome/) or the new Chromium-based [Microsoft Edge](https://www.microsoft.com/en-us/edge) browser installed before continuing.
+
+   > It has been reported that Google Chrome version 74 experiences this issue where Sony's authorization fails due to a CORS bug. This is why it is STRONGLY recommended to update your browsers to the latest version.
+
 
 6. Open up a new browser window
    
@@ -153,7 +156,11 @@ Now here comes the fun part. We now have the `plugin.py` file open in our editor
 
    ![store_auth]
 
+   **NB! Keep this tab open once signed in to keep the session active for the workaround to work**
+
 9. Open a new tab and navigate to [https://ca.account.sony.com/api/v1/ssocookie](https://ca.account.sony.com/api/v1/ssocookie)
+   
+   **NB! This tab should also be kept open to keep the session active for the workaround to work**
 
    You should see the following:
 
@@ -166,10 +173,10 @@ Now here comes the fun part. We now have the `plugin.py` file open in our editor
    {"error":"invalid_grant","error_description":"Invalid login","error_code":20,"docs":"https://auth.api.sonyentertainmentnetwork.com/docs/","parameters":[]}
    ```
 
-   - Navigate back to the Playstation Store tab. 
+   - Switch back to the Playstation Store tab (which you should still have open). 
    - Sign out.
    - Sign back in. 
-   - Navigate back to [https://ca.account.sony.com/api/v1/ssocookie](https://ca.account.sony.com/api/v1/ssocookie) and refresh the page (`CTRL+R` or `CTRL+F5`)
+   - Switch back to the [https://ca.account.sony.com/api/v1/ssocookie](https://ca.account.sony.com/api/v1/ssocookie) tab and refresh the page (`CTRL+R` or `CTRL+F5`)
 
 10. Copy the 64-character _NPSSO_ token along with the quotes.
 11. **DO NOT CLOSE YOUR BROWSER**
@@ -206,11 +213,14 @@ Some of you might come across an error where it shows as _Offline_ when you try 
 This is the result of your _NPSSO token_ expiring before you finished up. You took too long to edit the plugin and now you need a new token.
 
 1. `Disconnect` from PlayStation Netowrk.
-2. Sign-in to [https://store.playstation.com](https://store.playstation.com). If you're already signed in, sign out, and sign in again.
-3. Navigate to [https://ca.account.sony.com/api/v1/ssocookie](https://ca.account.sony.com/api/v1/ssocookie). If it's an existing tab/window from before, refresh your page to get a new token.
-4. Copy the token.
-5. **DO NOT CLOSE YOUR BROWSER**
-6. Replace your _NPSSO token_ in `plugin.py` with the new token and save.
-7. Exit GOG.
-8. Relaunch GOG.
-9. Try connecting again.
+2. Go back to the PlayStation Store tab in your browser, which you should still have open from previous steps. Sign-in to [https://store.playstation.com](https://store.playstation.com). If you're already signed in, sign out, and sign in again.
+3. Switch to the [https://ca.account.sony.com/api/v1/ssocookie](https://ca.account.sony.com/api/v1/ssocookie) tab, which also should still be open from previous steps. Refresh your page to get a new token (`CTRL+F5`).
+4. **NB! Keep both these tabs open to ensure that the workaround works**
+5. Copy the token.
+6. **DO NOT CLOSE YOUR BROWSER**
+7. Replace your _NPSSO token_ in `plugin.py` with the new token and save.
+8. Exit GOG.
+9. Relaunch GOG.
+10. Try connecting again.
+
+## I hope that this fixes the connection issues for most
