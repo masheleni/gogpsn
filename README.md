@@ -20,6 +20,7 @@
 [error]: img/error.png
 [code1]: img/code1.png
 [code2]: img/code2.png
+[code3]: img/code3.png
 [downloading]: img/downloading.png
 
 # GOG Galaxy PlayStation Network Connector Sign-in Workaround
@@ -186,8 +187,14 @@ Now here comes the fun part. We now have the `plugin.py` file open in our editor
     ![code1]
 
 14. Replace the last word `None` on line 64 with your _NPSSO Token_
+
+    The NPSSO token has to be surrounded by "quotes"
+
+    After editing line 64, it should look something like this:
     
-    ![code2]
+    ![code3]
+
+    **!NB: DO NOT CHANGE ANY OTHER LINE EXEPT LINE 64**
 
 15. Save `plugin.py`.
 
